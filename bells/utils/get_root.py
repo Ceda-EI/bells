@@ -1,3 +1,4 @@
+"Find the root of a bells project"
 import logging
 import os
 import pathlib
@@ -14,7 +15,7 @@ def get_root():
             config_file = config_dir / "config.ini"
             if config_file.is_file():
                 logging.debug("Found root: %s", directory)
-                return directory
+                return directory.resolve()
 
     logging.debug("No root found")
     return False
