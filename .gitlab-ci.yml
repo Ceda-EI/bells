@@ -1,0 +1,37 @@
+image: python:3.9
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+stages:
+  - build
+  - publish
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv
+
+before_script:
+  - pip install poetry
+  - poetry --version
+  - poetry config settings.virtualenvs.in-project true
+  - poetry install
+
+build:
+  stage: build
+  script:
+    - poetry build
+  artifacts:
+    paths:
+      - dist/*.whl
+      - dist/*.tar.gz
+  only:
+    - tags
+
+pypi:
+  stage: publish
+  script:
+    - poetry publish -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD"
+  only:
+    - tags
