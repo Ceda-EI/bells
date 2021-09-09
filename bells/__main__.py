@@ -2,7 +2,7 @@
 import logging
 
 import click
-from .commands import init
+from .commands import init, rec
 
 
 @click.group()
@@ -10,13 +10,14 @@ from .commands import init
               help="Verbose mode for printing debug info")
 def main(verbose):
     "Bells is a project for storing voice recordings"
-    level = logging.FATAL
+    level = logging.WARN
     if verbose:
         level = logging.DEBUG
     logging.basicConfig(level=level)
 
 
 main.add_command(init)
+main.add_command(rec)
 
 if __name__ == '__main__':
     main()  # pylint: disable=E1120

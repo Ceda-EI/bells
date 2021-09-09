@@ -11,6 +11,7 @@ repository = "https://gitlab.com/ceda_ei/bells.git"
 [tool.poetry.dependencies]
 python = "^3.7"
 click = "^8.0.1"
+questionary = "^1.10.0"
 
 [tool.poetry.dev-dependencies]
 

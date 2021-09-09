@@ -43,6 +43,9 @@ class _ConfigGroup:
     def __str__(self):
         return "config." + self._section.name
 
+    def __contains__(self, value):
+        return value in self._section
+
 
 class _SlashListConfigGroup(_ConfigGroup):
     "Internal class for a config group where items are slash separated lists"
