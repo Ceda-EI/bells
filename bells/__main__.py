@@ -2,7 +2,7 @@
 import logging
 
 import click
-from .commands import init, rec
+from .commands import init, rec, rec_file
 
 
 @click.group()
@@ -18,6 +18,7 @@ def main(verbose):
 
 main.add_command(init)
 main.add_command(rec)
+main.add_command(rec_file)
 
 if __name__ == '__main__':
     main()  # pylint: disable=E1120
