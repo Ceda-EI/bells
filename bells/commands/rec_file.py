@@ -1,3 +1,4 @@
+"Simple command to record to a file outside a project"
 import click
 
 from ..recording import interactive_recorder

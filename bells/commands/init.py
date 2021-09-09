@@ -32,7 +32,7 @@ def init(config, path):
     os.makedirs(path/".bells", exist_ok=True)
 
     logging.info("Creating .bells/config.ini")
-    with open(path/".bells"/"config.ini", "w") as config_file:
+    with open(path/".bells"/"config.ini", "w", encoding="utf-8") as config_file:
         config_file.write("")
 
     logging.info("Creating other directories")

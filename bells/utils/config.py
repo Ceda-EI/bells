@@ -125,7 +125,7 @@ class Config:
 
     def _write_config_file(self):
         "Writes config back into the config file"
-        with open(self.config_file_path, "w") as config_file:
+        with open(self.config_file_path, "w", encoding="utf-8") as config_file:
             self.config.write(config_file)
 
     def __getitem__(self, key):

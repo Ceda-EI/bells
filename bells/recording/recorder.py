@@ -10,10 +10,10 @@ import soundfile as sf
 from .. import colors
 
 def samplerate():
+    "Gets sample rate for default input device"
     device_info = sd.query_devices(None, 'input')
     logging.info("device_info %s", device_info)
-    samplerate = int(device_info['default_samplerate'])
-    return samplerate
+    return  int(device_info['default_samplerate'])
 
 
 async def _prompt(pause, stop, style):
@@ -26,13 +26,13 @@ async def _prompt(pause, stop, style):
             res = await paused.ask_async()
         else:
             res = await recording.ask_async()
-        if res == "stop":
-            stop.set()
-            break
-        elif res == "pause":
+        if res == "pause":
             pause.set()
         elif res == "resume":
             pause.clear()
+        elif res == "stop":
+            stop.set()
+            break
 
 
 async def _recorder(pause, stop, file):

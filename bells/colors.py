@@ -1,3 +1,5 @@
+"Style for prompts"
+
 from questionary import Style
 
 style = Style([

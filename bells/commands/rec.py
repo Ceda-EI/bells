@@ -69,12 +69,13 @@ def prompt_for_name(config, path):
     if str(path) in config.autocomplete:
         choices = config.autocomplete[str(path)]
     if choices:
-       q = questionary.autocomplete("Choose a name", choices, style=style,
-                                    qmark="", validate=is_valid_name)
+        question = questionary.autocomplete("Choose a name", choices,
+                                            style=style, qmark="",
+                                            validate=is_valid_name)
     else:
-        q = questionary.text("Choose a name", style=style, qmark="",
+        question = questionary.text("Choose a name", style=style, qmark="",
                              validate=is_valid_name)
-    name = q.unsafe_ask()
+    name = question.unsafe_ask()
     if name not in choices:
         config.autocomplete[str(path)] = [*choices, name]
     return name
