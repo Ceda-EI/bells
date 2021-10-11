@@ -9,11 +9,12 @@ import soundfile as sf
 
 from .. import colors
 
+
 def samplerate():
     "Gets sample rate for default input device"
     device_info = sd.query_devices(None, 'input')
     logging.info("device_info %s", device_info)
-    return  int(device_info['default_samplerate'])
+    return int(device_info['default_samplerate'])
 
 
 async def _prompt(pause, stop, style):
@@ -42,10 +43,10 @@ async def _recorder(pause, stop, file):
             return
         file.write(indata.copy())
 
-    stream = sd.InputStream(samplerate=samplerate(), channels=1, callback=callback)
+    stream = sd.InputStream(samplerate=samplerate(), channels=1,
+                            callback=callback)
     with stream:
         await stop.wait()
-
 
 
 async def interactive_recorder_async(path, style):

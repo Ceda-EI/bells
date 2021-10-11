@@ -8,6 +8,7 @@ import questionary
 from .. import utils
 from ..colors import style
 
+
 # TODO: Move validation functions to a separate module
 def is_valid_name(name):
     "Checks whether the name is a valid name"
@@ -74,7 +75,7 @@ def prompt_for_name(config, path):
                                             validate=is_valid_name)
     else:
         question = questionary.text("Choose a name", style=style, qmark="",
-                             validate=is_valid_name)
+                                    validate=is_valid_name)
     name = question.unsafe_ask()
     if name not in choices:
         config.autocomplete[str(path)] = [*choices, name]

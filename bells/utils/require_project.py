@@ -6,6 +6,7 @@ import click
 from .config import pass_config
 from .get_root import get_root
 
+
 def require_project(command):
     """Decorator for commands which only work inside projects.
 
