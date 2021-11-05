@@ -1,9 +1,13 @@
 "Recording command"
+from datetime import datetime
 import logging
 import pathlib
 
 import click
 import questionary
+
+from ..recording import recorder
+from ..linker import FilePath
 
 from .. import utils
 from ..colors import style
@@ -114,4 +118,11 @@ def rec(config, path, name):
     if not is_valid_name(name) or not is_valid_path(config, path):
         logging.error("Invalid name or path")
         return 2
+
+    now = datetime.now().strftime("%F")
+    file = FilePath(config, path, now, name)
+    recorder.interactive_recorder(file.path)
+    file.link()
+    click.echo(f"Finished recording at {file.path}")
+    click.echo(f"Finished recording at {file.linked_path}")
     return 0
