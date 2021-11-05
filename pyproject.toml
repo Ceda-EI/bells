@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bells"
-version = "0.3.0"
+version = "0.4.0"
 description = "Bells is a program for keeping track of sound recordings."
 authors = ["Ceda EI <ceda_ei@webionite.com>"]
 license = "GPL-3.0"
